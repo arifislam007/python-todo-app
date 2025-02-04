@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Welcome, {{ current_user.username }}!</h1>
+    <h2>Your ToDo List</h2>
+    <ul>
+        {% for todo in todos %}
+            <li>
+                {{ todo.task }}
+                <a href="{{ url_for('delete_todo', todo_id=todo.id) }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('add_todo') }}">Add New ToDo</a>
+{% endblock %}
